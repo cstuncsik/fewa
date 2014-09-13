@@ -1,9 +1,10 @@
-game.tower = function(c, t) {
-    this.type = t;
+game.tower = function(p) {
+    this.type = p.type;
     this.width = game.brickWidth;
     this.height = game.brickWidth;
-    this.setColumn(c);
+    this.setColumn(p.column);
     this.y = game.stage.height - this.height;
+    this.col = game.elements[this.type].color;
     this.hw = this.width / 2;
     this.hh = this.height / 2;
     this.rad = Math.round(this.width / 10);
@@ -19,30 +20,34 @@ game.tower.prototype.setColumn = function(c) {
 
 game.tower.prototype.destroy = function() {
     this.removed = true;
-    var px = this.width / 12,
-        py = this.height / 6;
+    var px = this.width / 6,
+        py = this.height / 6,
+        j, k;
 
-    for (var j = 1; j < 12; j++) {
-        for (var k = 1; k < 6; k++) {
-            game.particles.push(new game.particle(this.x + j * px, this.y + k * py, px, py, this.col, 4, 300));
+    game.rumble.level = 10;
+    for (j = 1; j < 6; j++) {
+        for (k = 1; k < 6; k++) {
+            game.particles.push(new game.particle({
+                name: 'particle' + this.col,
+                x: this.x + j * px,
+                y: this.y + k * py,
+                w: px,
+                h: py,
+                col: this.col,
+                speed: game.rand.range(1, 5),
+                dist: game.rand.range(3, 5) * 100
+            }));
         }
     }
-};
-
-game.tower.prototype.hit = function() {
-    var px = this.width / 8,
-        py = this.height / 4;
-
-    for (var j = 1; j < 8; j++) {
-        for (var k = 1; k < 4; k++) {
-            game.particles.push(new game.particle(this.x + j * px, this.y + k * py, px, py, this.col, 3, 200));
-        }
-    }
+    game.audio.play('explosion');
 };
 
 game.tower.prototype.shoot = function() {
-    if (game.s !== 0){
-        game.bullets.push(new game.bullet(this.column, this.type));
+    if (game.s !== 0) {
+        game.bullets.push(new game.bullet({
+            column: this.column,
+            type: this.type
+        }));
     }
 };
 

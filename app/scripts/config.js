@@ -6,16 +6,15 @@ create = function(n) {
 };
 
 var game = {
-    sprites: {},
-    columns: 8,
-    hoverColumn: null,
-    activeColumn: null,
-    gap: 2,
     ww: window.innerWidth,
     wh: window.innerHeight,
+    columns: 8,
+    gap: 2,
     level: 1,
-    prevLevel: 1,
     score: 0,
+    speed: 0.1,
+    gravity: 0.3,
+    paused: false,
     hud: {
         level: get("lv"),
         score: get('sc')
@@ -24,9 +23,12 @@ var game = {
     msg: get("msg"),
     mnu: get("mnu"),
     hlp: get("hlp"),
+    crd: get("crd"),
+    re: get("re"),
     ng: get("ng"),
     hl: get("hl"),
     cr: get("cr"),
+    f: get("f"),
     stage: get("c"),
     bg: get('b'),
     bgs: [{
@@ -39,9 +41,7 @@ var game = {
         b: get("b3"),
         c: 0
     }],
-    paused: false,
-    speed: 0.1,
-    gravity: 0.3,
+    moveBg: true,
     rumble: {
         body: get("r"),
         x: 0,
@@ -49,82 +49,102 @@ var game = {
         level: 0,
         decay: 0.4
     },
+    starAmount: 400,
     starColors: ["#ffffff", "#ffe9c4", "#d4fbff"],
     elements: {
         FIRE: {
             color: '#ff3824',
             latency: 50,
-            power: 100,
+            against: {
+                FIRE: 200,
+                EARTH: 50,
+                WATER: 10,
+                AIR: 100
+            },
             bricks: {
                 empty: {
-                    energy: 50
+                    energy: 100
                 },
                 filled: {
-                    energy: 100
+                    energy: 150
                 },
                 special: {
                     energy: 200
                 }
             },
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            spec: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            desc: "The Fire element, most effective against fire bricks, but least effective against water bricks.",
+            spec: "Fire special brick explodes the whole column of bricks."
         },
         EARTH: {
             color: '#44db5e',
             latency: 60,
-            power: 100,
+            against: {
+                FIRE: 100,
+                EARTH: 200,
+                WATER: 50,
+                AIR: 10
+            },
             bricks: {
                 empty: {
-                    energy: 50
+                    energy: 100
                 },
                 filled: {
-                    energy: 100
+                    energy: 150
                 },
                 special: {
                     energy: 200
                 }
             },
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            spec: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            desc: "The Earth element, most effective against earth bricks, but least effective against air bricks.",
+            spec: "Earth special brick explodes surrounding bricks."
         },
         WATER: {
             color: '#54c7fc',
             latency: 70,
-            power: 100,
+            against: {
+                FIRE: 10,
+                EARTH: 50,
+                WATER: 200,
+                AIR: 100
+            },
             bricks: {
                 empty: {
-                    energy: 50
+                    energy: 100
                 },
                 filled: {
-                    energy: 100
+                    energy: 150
                 },
                 special: {
                     energy: 200
                 }
             },
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            spec: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            desc: "The Water element, most effective against water bricks, but least effective against fire bricks.",
+            spec: "Water special brick explodes the whole row of bricks."
         },
         AIR: {
             color: '#ffcd00',
             latency: 40,
-            power: 100,
+            against: {
+                FIRE: 100,
+                EARTH: 10,
+                WATER: 50,
+                AIR: 200
+            },
             bricks: {
                 empty: {
-                    energy: 50
+                    energy: 100
                 },
                 filled: {
-                    energy: 100
+                    energy: 150
                 },
                 special: {
                     energy: 200
                 }
             },
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            spec: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            desc: "The Air element, most effective against air bricks, but least effective against earth bricks.",
+            spec: "Air special brick explodes all the weak(stroked) air bricks."
         }
-    },
-    starAmount: 400
+    }
 };
 
 game.ctx = game.stage.getContext('2d');

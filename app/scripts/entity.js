@@ -22,11 +22,9 @@ game.entity.prototype.destroy = function() {
 };
 
 game.entity.prototype.draw = function() {
-    //game.ctx.save();
     game.ctx.translate(this.x, this.y);
     if (this.rotate) {
         game.ctx.rotate(this.rotate * game.RAD);
     }
     game.ctx.drawImage(this.sprite, -this.width / 2, -this.height / 2, this.width, this.height);
-    //game.ctx.restore();
 };

@@ -59,8 +59,9 @@ game.fx = {
 game.audio = {
     sounds: {},
     references: [],
+    mute: false,
     play: function(sound) {
-        if (!game.mute) {
+        if (!game.audio.mute) {
             var audio = game.audio.sounds[sound];
             if (audio.length > 1) {
                 audio = game.audio.sounds[sound][game.rand.range(0, audio.length)];

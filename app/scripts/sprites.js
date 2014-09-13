@@ -63,7 +63,6 @@ game.sprite = {
 
         this.create('AIR-BRICK-empty', game.brickWidth, game.brickHeight, function(c) {
             game.rect(c, 0, 0, game.brickWidth, game.brickHeight, radius, game.elements.AIR.color, linewidth, null, glow);
-            
         });
 
         this.create('AIR-BRICK-filled', game.brickWidth, game.brickHeight, function(c) {

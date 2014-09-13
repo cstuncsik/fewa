@@ -95,6 +95,7 @@ game.brick.prototype.destroy = function(noscore) {
     this.removed = true;
     if (this.type === this.hitType) {
         this.explode();
+        game.flash = 8;
     }
     game.rumble.level = 5;
     var sz = 12,
@@ -129,11 +130,11 @@ game.brick.prototype.hit = function(p, t) {
 game.brick.prototype.update = function() {
     this.y += game.timer.move + this.add;
     if (this.add === 0) {
-        if (this.y > game.stage.height - this.height - game.brickWidth) {
+        if (game.s !== 0 && this.y > game.stage.height - this.height - game.brickWidth) {
             game.over();
         }
     } else {
-        this.add += game.gravity;
+        this.add -= game.gravity;
     }
 };
 

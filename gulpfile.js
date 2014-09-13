@@ -116,7 +116,7 @@ gulp.task('build', function() {
             'less'
         ],
         'html',
-        'browser-sync'
+        'browser-sync',
         'zip');
 });
 
