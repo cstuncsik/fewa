@@ -10,10 +10,9 @@ var game = {
     wh: window.innerHeight,
     columns: 8,
     gap: 2,
-    level: 1,
     score: 0,
     speed: 0.3,
-    gravity: 0.3,
+    gravity: 0.35,
     paused: false,
     hud: {
         level: get("lv"),
@@ -56,20 +55,20 @@ var game = {
             color: '#ff3824',
             latency: 50,
             against: {
-                FIRE: 100,
-                EARTH: 40,
-                WATER: 20,
-                AIR: 60
+                FIRE: 200,
+                EARTH: 20,
+                WATER: 10,
+                AIR: 50
             },
             bricks: {
                 empty: {
-                    energy: 60
+                    energy: 100
                 },
                 filled: {
-                    energy: 120
+                    energy: 250
                 },
                 special: {
-                    energy: 200
+                    energy: 400
                 }
             },
             desc: "The Fire element, most effective against fire bricks, but least effective against water bricks.",
@@ -77,22 +76,22 @@ var game = {
         },
         EARTH: {
             color: '#44db5e',
-            latency: 70,
+            latency: 80,
             against: {
-                FIRE: 60,
-                EARTH: 100,
-                WATER: 40,
-                AIR: 20
+                FIRE: 50,
+                EARTH: 200,
+                WATER: 20,
+                AIR: 10
             },
             bricks: {
                 empty: {
-                    energy: 60
+                    energy: 100
                 },
                 filled: {
-                    energy: 120
+                    energy: 250
                 },
                 special: {
-                    energy: 200
+                    energy: 400
                 }
             },
             desc: "The Earth element, most effective against earth bricks, but least effective against air bricks.",
@@ -100,22 +99,22 @@ var game = {
         },
         WATER: {
             color: '#54c7fc',
-            latency: 60,
+            latency: 70,
             against: {
-                FIRE: 20,
-                EARTH: 60,
-                WATER: 100,
-                AIR: 40
+                FIRE: 10,
+                EARTH: 20,
+                WATER: 200,
+                AIR: 50
             },
             bricks: {
                 empty: {
-                    energy: 60
+                    energy: 100
                 },
                 filled: {
-                    energy: 120
+                    energy: 250
                 },
                 special: {
-                    energy: 200
+                    energy: 400
                 }
             },
             desc: "The Water element, most effective against water bricks, but least effective against fire bricks.",
@@ -123,22 +122,22 @@ var game = {
         },
         AIR: {
             color: '#ffcd00',
-            latency: 40,
+            latency: 60,
             against: {
-                FIRE: 60,
-                EARTH: 20,
-                WATER: 40,
-                AIR: 100
+                FIRE: 50,
+                EARTH: 10,
+                WATER: 20,
+                AIR: 200
             },
             bricks: {
                 empty: {
-                    energy: 60
+                    energy: 100
                 },
                 filled: {
-                    energy: 120
+                    energy: 250
                 },
                 special: {
-                    energy: 200
+                    energy: 400
                 }
             },
             desc: "The Air element, most effective against air bricks, but least effective against earth bricks.",
