@@ -3,7 +3,7 @@ FEWA
 
 **Fire Earth Water Air**  
 
-Shooter game for the js13k 2014 contest  
+Logical shooter game for the js13k game 2014 contest  
 
 ##Game rules##
 You have the four elements and 3 types of bricks from each element type.
