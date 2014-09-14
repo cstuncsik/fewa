@@ -25,6 +25,9 @@ The Air element, most effective against air bricks, but least effective against 
 **Pause:** P  **Mute:** M    
 **Stop background animation** B (beacause of performance issues on some devices)  
 
+##Screenshot##
+![FEWA](fewa.jpg?raw=true "FEWA")
+
 ##Quickstart##
 - install [Node.js](http://nodejs.org/download/)
 - install [gulp.js](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
