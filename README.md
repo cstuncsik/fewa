@@ -6,9 +6,9 @@ FEWA
 Logical shooter game for the js13k game 2014 contest  
 
 ##Game rules##
-You have the four elements and 3 types of bricks from each element type.
-Striked bricks are weak, filled bricks are stronger and signed bricks are the strongest.
-If you shoot the signed bricks with the proper element it has special effect.
+You have the four elements and 3 types of bricks from each element type.  
+Stroked empty bricks are weak, color filled bricks are stronger and signed bricks are the strongest.  
+If you shoot the signed bricks with the proper element it has special effect.  
 
 Fire special brick explodes the whole column of bricks.  
 Earth special brick explodes surrounding bricks.  
