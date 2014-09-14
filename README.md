@@ -1,7 +1,7 @@
 FEWA
 ====
 
-**Fire Earth Water Air**
+**F**ire **E**arth **W**ater **A**ir
 
 Shooter game for the js13k 2014 contest  
 
@@ -30,7 +30,8 @@ The Air element, most effective against air bricks, but least effective against 
 - install [gulp.js](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 - clone the repository
 - go to cloned directory
-- in command prompt or terminal run: ```npm install```, then run ```gulp``` for development mode or ```gulp build``` to build production to **/dist** folder
+- in command prompt or terminal run: ```npm install```, then run ```gulp``` for development mode or  
+```gulp build``` to build production to **/dist** folder
 
 ##Credits##
 **Created by:** Zoltan Pasztor & Csaba Tuncsik  
