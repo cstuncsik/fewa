@@ -1,7 +1,7 @@
 FEWA
 ====
 
-**F**ire **E**arth **W**ater **A**ir
+**Fire Earth Water Air**  
 
 Shooter game for the js13k 2014 contest  
 
