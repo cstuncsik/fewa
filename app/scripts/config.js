@@ -12,7 +12,7 @@ var game = {
     gap: 2,
     level: 1,
     score: 0,
-    speed: 0.1,
+    speed: 0.3,
     gravity: 0.3,
     paused: false,
     hud: {
@@ -56,17 +56,17 @@ var game = {
             color: '#ff3824',
             latency: 50,
             against: {
-                FIRE: 200,
-                EARTH: 50,
-                WATER: 10,
-                AIR: 100
+                FIRE: 100,
+                EARTH: 40,
+                WATER: 20,
+                AIR: 60
             },
             bricks: {
                 empty: {
-                    energy: 100
+                    energy: 60
                 },
                 filled: {
-                    energy: 150
+                    energy: 120
                 },
                 special: {
                     energy: 200
@@ -77,19 +77,19 @@ var game = {
         },
         EARTH: {
             color: '#44db5e',
-            latency: 60,
+            latency: 70,
             against: {
-                FIRE: 100,
-                EARTH: 200,
-                WATER: 50,
-                AIR: 10
+                FIRE: 60,
+                EARTH: 100,
+                WATER: 40,
+                AIR: 20
             },
             bricks: {
                 empty: {
-                    energy: 100
+                    energy: 60
                 },
                 filled: {
-                    energy: 150
+                    energy: 120
                 },
                 special: {
                     energy: 200
@@ -100,19 +100,19 @@ var game = {
         },
         WATER: {
             color: '#54c7fc',
-            latency: 70,
+            latency: 60,
             against: {
-                FIRE: 10,
-                EARTH: 50,
-                WATER: 200,
-                AIR: 100
+                FIRE: 20,
+                EARTH: 60,
+                WATER: 100,
+                AIR: 40
             },
             bricks: {
                 empty: {
-                    energy: 100
+                    energy: 60
                 },
                 filled: {
-                    energy: 150
+                    energy: 120
                 },
                 special: {
                     energy: 200
@@ -125,17 +125,17 @@ var game = {
             color: '#ffcd00',
             latency: 40,
             against: {
-                FIRE: 100,
-                EARTH: 10,
-                WATER: 50,
-                AIR: 200
+                FIRE: 60,
+                EARTH: 20,
+                WATER: 40,
+                AIR: 100
             },
             bricks: {
                 empty: {
-                    energy: 100
+                    energy: 60
                 },
                 filled: {
-                    energy: 150
+                    energy: 120
                 },
                 special: {
                     energy: 200
