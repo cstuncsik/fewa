@@ -78,7 +78,7 @@ game.brick = function(p) {
                         r = game.bricks[n].length;
                         while (r--) {
                             b = game.bricks[n][r];
-                            if (b && !b.removed && b.type === this.type && b.val === 50) {
+                            if (b && !b.removed && b.type === this.type) {
                                 b.hitType = b.type;
                                 b.destroy();
                             }
