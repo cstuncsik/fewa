@@ -36,8 +36,7 @@ var browserSync  = require('browser-sync'),
                     css: 'dist'
                 },
                 tmp: {
-                    root: 'tmp',
-                    css: 'tmp'
+                    root: 'tmp'
                 }
     };
 
@@ -61,7 +60,7 @@ gulp.task('lint', function() {
 gulp.task('less', function() {
     return gulp.src(paths.src.less)
         .pipe(plumber())
-        .pipe(changed(paths.tmp.css, {extension: '.css'}))
+        .pipe(changed(paths.tmp.root, {extension: '.css'}))
         .pipe(using())
         .pipe(less())
         .pipe(prefix('last 1 version', '> 1%', 'ie 9', 'ie 8'))
@@ -69,7 +68,7 @@ gulp.task('less', function() {
             showFiles: true,
             title: 'less'
         }))
-        .pipe(gulp.dest(paths.tmp.css))
+        .pipe(gulp.dest(paths.tmp.root))
         .pipe(browserSync.reload({
             stream: true
         }))
