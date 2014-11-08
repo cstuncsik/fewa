@@ -71,7 +71,7 @@ game.message = function(cont, delay, back) {
             game.msg.innerHTML = cont;
         }
         if (back) {
-            b = create('em');
+            b = game.dom.create('em');
             b.innerHTML = back;
             game.msg.appendChild(b);
         }
@@ -173,10 +173,10 @@ game.help = function() {
             if (game.elements.hasOwnProperty(element)) {
                 var k = element,
                     v = game.elements[element],
-                    el = create('div'),
-                    ttl = create('h2'),
-                    desc = create('p'),
-                    spec = create('p');
+                    el = game.dom.create('div'),
+                    ttl = game.dom.create('h2'),
+                    desc = game.dom.create('p'),
+                    spec = game.dom.create('p');
 
                 ttl.innerHTML = k + '<br />';
                 desc.innerHTML = v.desc;
@@ -352,7 +352,7 @@ game.initBackground = function() {
         b = game.bgs.length;
 
     while (b--) {
-        game.bg.ctx.clearRect(0, 0, game.bg.ctx.canvas.width, game.bg.ctx.canvas.height);
+        game.bgCtx.clearRect(0, 0, game.bgCtx.canvas.width, game.bgCtx.canvas.height);
         s = game.starAmount;
         while (s--) {
             star = new game.star(game.bgs.length - b + 1);
@@ -529,12 +529,50 @@ game.controls = function() {
 };
 
 window.onload = function() {
+
+    game.obj.extend(game, {
+        rumble: {
+            body: game.dom.get("r")
+        },
+        hud: {
+            level: game.dom.get("lv"),
+            score: game.dom.get('sc')
+        },
+        cnt: game.dom.get("cnt"),
+        msg: game.dom.get("msg"),
+        mnu: game.dom.get("mnu"),
+        hlp: game.dom.get("hlp"),
+        crd: game.dom.get("crd"),
+        re: game.dom.get("re"),
+        ng: game.dom.get("ng"),
+        hl: game.dom.get("hl"),
+        cr: game.dom.get("cr"),
+        f: game.dom.get("f"),
+        stage: game.dom.get("c"),
+        bg: game.dom.get('b'),
+        bgs: [{
+            b: game.dom.get("b1"),
+            c: 0
+        }, {
+            b: game.dom.get("b2"),
+            c: 0
+        }, {
+            b: game.dom.get("b3"),
+            c: 0
+        }]
+    });
+
     game.stage.width = game.wh / 2;
     game.stage.height = game.wh - 30;
-    game.cnt.style.height = game.wh + 'px';
     game.cnt.style.width = game.stage.width + 'px';
+    game.cnt.style.height = game.wh + 'px';
     game.bg.width = game.ww;
     game.bg.height = game.wh;
+
+    game.obj.extend(game, {
+        ctx: game.stage.getContext('2d'),
+        bgCtx: game.bg.getContext('2d')
+    });
 
     for (var i = 0; i < 3; i++) {
         game.bgs[i].width = game.ww;
@@ -545,7 +583,7 @@ window.onload = function() {
 
     (function loop() {
         game.timer.tick();
-        window.requestAnimationFrame(loop, game.stage);
+        window.requestAnimationFrame(loop, game.stage.canvas);
         game.stats.begin();
         game.updateBackground();
         if (!game.paused) {

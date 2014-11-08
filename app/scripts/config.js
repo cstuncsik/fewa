@@ -1,11 +1,4 @@
-var get = function(id) {
-    return document.getElementById(id);
-},
-create = function(n) {
-    return document.createElement(n);
-};
-
-var game = {
+game.obj.extend(game, {
     ww: window.innerWidth,
     wh: window.innerHeight,
     columns: 8,
@@ -14,41 +7,14 @@ var game = {
     speed: 0.3,
     gravity: 0.35,
     paused: false,
-    hud: {
-        level: get("lv"),
-        score: get('sc')
-    },
-    cnt: get("cnt"),
-    msg: get("msg"),
-    mnu: get("mnu"),
-    hlp: get("hlp"),
-    crd: get("crd"),
-    re: get("re"),
-    ng: get("ng"),
-    hl: get("hl"),
-    cr: get("cr"),
-    f: get("f"),
-    stage: get("c"),
-    bg: get('b'),
-    bgs: [{
-        b: get("b1"),
-        c: 0
-    }, {
-        b: get("b2"),
-        c: 0
-    }, {
-        b: get("b3"),
-        c: 0
-    }],
     moveBg: true,
     rumble: {
-        body: get("r"),
         x: 0,
         y: 0,
         level: 0,
         decay: 0.4
     },
-    starAmount: 400,
+    starAmount: Math.floor((window.innerWidth / window.innerHeight) * 100),
     starColors: ["#ffffff", "#ffe9c4", "#d4fbff"],
     elements: {
         FIRE: {
@@ -144,7 +110,4 @@ var game = {
             spec: "Air special brick explodes all the weak(stroked) air bricks."
         }
     }
-};
-
-game.ctx = game.stage.getContext('2d');
-game.bg.ctx = game.bg.getContext('2d');
+});

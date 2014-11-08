@@ -1,17 +1,20 @@
 var browserSync  = require('browser-sync'),
-    stylish      = require('jshint-stylish'),
-    runSequence  = require('run-sequence'),
-    gulp         = require('gulp'),
-    prefix       = require('gulp-autoprefixer'),
     cache        = require('gulp-cached'),
     changed      = require('gulp-changed'),
     clean        = require('gulp-clean'),
     csso         = require('gulp-csso'),
+    fs           = require('fs'),
+    gulp         = require('gulp'),
     jshint       = require('gulp-jshint'),
     less         = require('gulp-less'),
     minifyHtml   = require('gulp-minify-html'),
+    plumber      = require('gulp-plumber'),
+    prefix       = require('gulp-autoprefixer'),
+    replace      = require('gulp-replace'),
     rev          = require('gulp-rev'),
+    runSequence  = require('run-sequence'),
     size         = require('gulp-size'),
+    stylish      = require('jshint-stylish'),
     uglify       = require('gulp-uglify'),
     usemin       = require('gulp-usemin'),
     using        = require('gulp-using'),
@@ -33,8 +36,7 @@ var browserSync  = require('browser-sync'),
                     css: 'dist'
                 },
                 tmp: {
-                    root: 'tmp',
-                    css: 'tmp'
+                    root: 'tmp'
                 }
     };
 
@@ -42,11 +44,13 @@ gulp.task('clean', function() {
     return gulp.src([paths.dest.root, paths.tmp.root], {
             read: false
         })
+        .pipe(plumber())
         .pipe(clean());
 });
 
 gulp.task('lint', function() {
     return gulp.src(paths.src.js)
+        .pipe(plumber())
         .pipe(cache('linting'))
         .pipe(jshint())
         .pipe(jshint.reporter(stylish))
@@ -55,7 +59,8 @@ gulp.task('lint', function() {
 
 gulp.task('less', function() {
     return gulp.src(paths.src.less)
-        .pipe(changed(paths.tmp.css, {extension: '.css'}))
+        .pipe(plumber())
+        .pipe(changed(paths.tmp.root, {extension: '.css'}))
         .pipe(using())
         .pipe(less())
         .pipe(prefix('last 1 version', '> 1%', 'ie 9', 'ie 8'))
@@ -63,7 +68,7 @@ gulp.task('less', function() {
             showFiles: true,
             title: 'less'
         }))
-        .pipe(gulp.dest(paths.tmp.css))
+        .pipe(gulp.dest(paths.tmp.root))
         .pipe(browserSync.reload({
             stream: true
         }))
@@ -72,6 +77,7 @@ gulp.task('less', function() {
 
 gulp.task('html', function() {
     return gulp.src(paths.src.html)
+        .pipe(plumber())
         .pipe(usemin({
             css: [csso(), rev()],
             js: [uglify(), rev()],
@@ -104,10 +110,23 @@ gulp.task('watch', function() {
     gulp.watch([paths.src.html], ['bs-reload']);
 });
 
+gulp.task('inline', function() {
+    return gulp.src(paths.dest.html)
+        .pipe(plumber())
+        .pipe(replace(new RegExp('<link rel="stylesheet" href="(.*?)">', 'g'), function(match, src) {
+            return '<style>' + fs.readFileSync(paths.dest.root + '/' + src, 'utf8') + '</style>';
+        }))
+        .pipe(replace(new RegExp('<script src="(.*?)"><\/script>', 'g'), function(match, src) {
+            return '<script>' + fs.readFileSync(paths.dest.root + '/' + src, 'utf8') + '</script>';
+        }))
+        .pipe(gulp.dest(paths.tmp.root));
+});
+
 gulp.task('zip', function () {
     return gulp.src(paths.dest.root + '/*')
+        .pipe(plumber())
         .pipe(zip('dist.zip'))
-        .pipe(gulp.dest(paths.dest.root));
+        .pipe(gulp.dest(paths.tmp.root));
 });
 
 gulp.task('build', function() {
@@ -116,6 +135,7 @@ gulp.task('build', function() {
             'less'
         ],
         'html',
+        'inline',
         'browser-sync',
         'zip');
 });
