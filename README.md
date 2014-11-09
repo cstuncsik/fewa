@@ -1,5 +1,3 @@
-[![Dependency Status](https://gemnasium.com/Csombek/fewa.svg)](https://gemnasium.com/Csombek/fewa)
-
 FEWA
 ====
 
@@ -45,3 +43,9 @@ You can try it [here](http://fewa.comformity.hu/)
 **Audio Processing:** [JSFXR](https://github.com/mneubrand/jsfxr) by [@markusneubrand](https://twitter.com/markusneubrand)
 **Game sound inspired by:** [@jackrugile](https://twitter.com/jackrugile) (http://codepen.io/jackrugile/blog/arcade-audio-for-js13k-games)
 **Game random number utility inspired by:** # JS13KGames Boilerplate (https://github.com/ooflorent/js13k-boilerplate/blob/master/src/rng.js)
+
+##License##
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See [WTFPL](http://www.wtfpl.net) ![WTFPL icon](http://i.imgur.com/AsWaQQl.png) for more details.
