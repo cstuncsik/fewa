@@ -22,7 +22,7 @@ The Air element, most effective against air bricks, but least effective against 
 
 ##Controls##
 **Swap/Move elements:** Click highlighted column to select an element and click to drop to another column
-**Pause:** P  **Mute:** M
+**Pause:** P,  **Mute:** M,
 **Stop background animation:** B (because of performance issues on some devices)
 
 ##Screenshot##

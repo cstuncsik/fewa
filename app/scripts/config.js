@@ -1,11 +1,11 @@
-game.obj.extend(game, {
+game.obj.extend(true, game, {
     ww: window.innerWidth,
     wh: window.innerHeight,
     columns: 8,
     gap: 2,
     score: 0,
-    speed: 0.3,
-    gravity: 0.35,
+    speed: 0.1,
+    gravity: 0.3,
     paused: false,
     moveBg: true,
     rumble: {
