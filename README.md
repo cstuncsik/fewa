@@ -40,8 +40,11 @@ You can try it [here](http://fewa.comformity.hu/)
 
 ##Credits##
 **Created by:** Zoltan Pasztor & Csaba Tuncsik
+
 **Audio Processing:** [JSFXR](https://github.com/mneubrand/jsfxr) by [@markusneubrand](https://twitter.com/markusneubrand)
+
 **Game sound inspired by:** [@jackrugile](https://twitter.com/jackrugile) (http://codepen.io/jackrugile/blog/arcade-audio-for-js13k-games)
+
 **Game random number utility inspired by:** # JS13KGames Boilerplate (https://github.com/ooflorent/js13k-boilerplate/blob/master/src/rng.js)
 
 ##License##

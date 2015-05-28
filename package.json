@@ -1,16 +1,13 @@
 {
   "name": "FEWA",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shooter game for the js13k contest",
   "authors": [
     "Csaba <csaba.tuncsik@gmail.com>",
     "Zoltán <zoltan.t.pasztor@gmail.com>"
   ],
   "license": "free",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Csombek/fewa.git"
-  },
+  "repository": "cstuncsik/fewa.git",
   "devDependencies": {
     "browser-sync": "^1.6.5",
     "gulp": "^3.8.10",
