@@ -1,14 +1,16 @@
-(function() {
+(function () {
+    "use strict";
+
     var lastTime = 0,
         vendors = ['webkit', 'moz', 'o', 'ms'];
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; i+=1) {
+        window.requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
     }
     if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function(callback, element) {
+        window.requestAnimationFrame = function (callback, element) {
             var currTime = new Date().getTime(),
                 timeToCall = Math.max(0, 16 - (currTime - lastTime)),
-                id = window.setTimeout(function() {
+                id = window.setTimeout(function () {
                     callback(currTime + timeToCall);
                 }, timeToCall);
             lastTime = currTime + timeToCall;

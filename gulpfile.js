@@ -32,7 +32,7 @@ var browserSync  = require('browser-sync'),
                 dest: {
                     root: 'dist',
                     html: 'dist/*.html',
-                    js: 'dist',
+                    js: 'dist/*.js',
                     css: 'dist'
                 },
                 tmp: {
@@ -80,7 +80,7 @@ gulp.task('html', function() {
         .pipe(plumber())
         .pipe(usemin({
             css: [csso(), rev()],
-            js: [uglify(), rev()],
+            js: [rev()],
             html: [minifyHtml({
                 comments: true,
                 conditionals: true,
@@ -95,7 +95,7 @@ gulp.task('html', function() {
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: ['dist', 'app', 'tmp', './']
+            baseDir: ['dist', 'app', 'tmp']
         }
     });
 });
@@ -122,11 +122,32 @@ gulp.task('inline', function() {
         .pipe(gulp.dest(paths.tmp.root));
 });
 
-gulp.task('zip', function () {
-    return gulp.src(paths.dest.root + '/*')
+gulp.task('use-strict:remove', function() {
+    return gulp.src(paths.src.js)
         .pipe(plumber())
-        .pipe(zip('dist.zip'))
-        .pipe(gulp.dest(paths.tmp.root));
+        .pipe(replace(/^(\(function[\s\S]*strict";)([\s\S]*)(\}\)\(\);\r\n)$/, '$2'))
+        .pipe(gulp.dest(paths.tmp.root + '/scripts'));
+});
+
+gulp.task('use-strict:add', function() {
+    return gulp.src(paths.dest.js)
+        .pipe(plumber())
+        .pipe(replace(/([\s\S]*)/, '(function () {"use strict";$1})();'))
+        .pipe(gulp.dest(paths.dest.root));
+});
+
+gulp.task('uglify', function() {
+    return gulp.src(paths.dest.js)
+        .pipe(plumber())
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.dest.root));
+});
+
+gulp.task('zip', function () {
+    return gulp.src(paths.tmp.root + '/index.html')
+        .pipe(plumber())
+        .pipe(zip('inlined-compressed.zip'))
+        .pipe(gulp.dest(paths.dest.root));
 });
 
 gulp.task('build', function() {
@@ -134,7 +155,10 @@ gulp.task('build', function() {
             'lint',
             'less'
         ],
+        'use-strict:remove',
         'html',
+        'use-strict:add',
+        'uglify',
         'inline',
         'browser-sync',
         'zip');

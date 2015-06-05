@@ -1,30 +1,30 @@
-game.entity = function(p) {
-    if (p) {
-        this.x = p.x;
-        this.y = p.y;
-        this.width = p.w;
-        this.height = p.h;
-        this.col = p.col;
+(function () {
+    "use strict";
+
+    game.entity = function (p) {
+        this.x = p.x || 0;
+        this.y = p.y || 0;
+        this.w = p.w || 0;
+        this.h = p.h || 0;
+        this.col = p.col || 0;
+        this.name = p.name || '';
         this.removed = false;
-        this.sprite = game.sprite.get(p.name);
-        if (!this.sprite) {
-            game.sprite.create(p.name, this.width, this.height, function(c) {
-                c.fillStyle = p.col;
-                c.fillRect(0, 0, p.w, p.h);
-            });
+        this.sprite = game.sprite.create(this.name, this.w, this.h, function (ctx) {
+            ctx.fillStyle = this.col;
+            ctx.fillRect(0, 0, this.w, this.h);
+        }.bind(this));
+
+    };
+
+    game.entity.prototype.destroy = function () {
+        this.removed = true;
+    };
+
+    game.entity.prototype.draw = function () {
+        game.ctx.translate(this.x, this.y);
+        if (this.rotate) {
+            game.ctx.rotate(this.rotate * game.RAD);
         }
-        this.sprite = game.sprite.get(p.name);
-    }
-};
-
-game.entity.prototype.destroy = function() {
-    this.removed = true;
-};
-
-game.entity.prototype.draw = function() {
-    game.ctx.translate(this.x, this.y);
-    if (this.rotate) {
-        game.ctx.rotate(this.rotate * game.RAD);
-    }
-    game.ctx.drawImage(this.sprite, -this.width / 2, -this.height / 2, this.width, this.height);
-};
+        game.ctx.drawImage(this.sprite, -this.w / 2, -this.h / 2, this.w, this.h);
+    };
+})();
