@@ -9,7 +9,7 @@
         this.move = p.speed + game.rand.rangef(-0.5, 0.5);
         this.distance = 0;
         this.maxDistance = (p.dist || 200) + game.rand.range(-30, 30);
-        this.delta = this.width / this.maxDistance;
+        this.delta = this.w / this.maxDistance;
     };
 
     game.particle.prototype = Object.create(game.entity.prototype);
@@ -17,8 +17,8 @@
 
     game.particle.prototype.update = function () {
 
-        this.width -= this.delta;
-        this.height -= this.delta;
+        this.w -= this.delta;
+        this.h -= this.delta;
 
         this.vy += game.gravity;
         this.y += this.vy;

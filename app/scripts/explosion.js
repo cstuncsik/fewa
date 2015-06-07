@@ -15,8 +15,8 @@
 
     game.explosion.prototype.update = function () {
         this.distance += this.delta;
-        this.width += this.delta;
-        this.height += this.delta;
+        this.w += this.delta;
+        this.h += this.delta;
         this.rotate += this.rot;
         if (this.distance > this.maxDistance) {
             this.distance = this.maxDistance;

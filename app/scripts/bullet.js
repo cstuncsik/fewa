@@ -18,7 +18,7 @@
     };
 
     game.bullet.prototype.destroy = function () {
-        [].push.apply(game.explosions,
+        Array.prototype.push.apply(game.explosions,
             [
                 new game.explosion({
                     name: 'explosion#ffffff',

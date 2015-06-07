@@ -4,13 +4,13 @@
     game.brick = function (p) {
         this.column = p.column;
         this.type = p.type;
-        this.width = game.brickWidth;
-        this.height = game.brickHeight;
-        this.x = this.column * this.width + game.gap * (this.column + 1);
-        this.y = -this.height;
-        this.hw = this.width / 2;
-        this.hh = this.height / 2;
-        this.rad = Math.round(this.width / 10);
+        this.w = game.brickWidth;
+        this.h = game.brickHeight;
+        this.x = this.column * this.w + game.gap * (this.column + 1);
+        this.y = -this.h;
+        this.hw = this.w / 2;
+        this.hh = this.h / 2;
+        this.rad = Math.round(this.w / 10);
         this.removed = false;
         this.col = game.elements[this.type].color;
         this.add = 0;
@@ -91,10 +91,10 @@
         for (var i = 0, l = 10; i < l; i+=1) {
             game.particles.push(new game.particle({
                 name: 'particle' + this.col,
-                x: this.x + this.width / 2,
-                y: this.y + this.height,
-                w: this.width / size,
-                h: this.height / (size / 2),
+                x: this.x + this.w / 2,
+                y: this.y + this.h,
+                w: this.w / size,
+                h: this.h / (size / 2),
                 col: this.col,
                 speed: game.rand.range(1, 5),
                 dist: game.rand.range(3, 5) * 100
@@ -118,7 +118,7 @@
     game.brick.prototype.update = function () {
         this.y += game.timer.move + this.add;
         if (this.add === 0) {
-            if (game.s !== 0 && this.y > game.stage.height - this.height - game.brickWidth) {
+            if (game.s !== 0 && this.y > game.stage.height - this.h - game.brickWidth) {
                 game.over();
             }
         } else {
