@@ -45,6 +45,8 @@ You can try it [here](http://fewa.comformity.hu/)
 
 **Game sound inspired by:** [@jackrugile](https://twitter.com/jackrugile) (http://codepen.io/jackrugile/blog/arcade-audio-for-js13k-games)
 
+**Game music** Sonant-X (https://github.com/nicolas-van/sonant-x)
+
 **Game random number utility inspired by:** # JS13KGames Boilerplate (https://github.com/ooflorent/js13k-boilerplate/blob/master/src/rng.js)
 
 ##License##

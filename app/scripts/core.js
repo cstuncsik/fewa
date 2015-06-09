@@ -495,6 +495,16 @@
             game.controls();
             game.stats();
             game.menu();
+
+            var audioCtx = new AudioContext();
+            var songGen = new sonantx.MusicGenerator(song);
+            songGen.createAudioBuffer(function(buffer) {
+                var source = audioCtx.createBufferSource(); // Create Sound Source
+                source.buffer = buffer; // Add Buffered Data to Object
+                source.connect(audioCtx.destination); // Connect Sound Source to Output
+                source.start();
+            });
+
         }
     });
 

@@ -163,6 +163,12 @@
                 game.rect(c, 0, 0, game.brickWidth, game.brickHeight, radius, game.elements.FIRE.color, linewidth, null, glow);
             });
 
+            ['#ffffff', '#ed8500', '#ffff00'].forEach(function (item) {
+                this.create('explosion' + item, game.brickWidth, game.brickHeight, function (c) {
+                    game.rect(c, 0, 0, game.brickWidth, game.brickHeight, 0, item, 0, item);
+                });
+            }, this);
+
         }
     };
 })();
