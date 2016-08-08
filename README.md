@@ -35,8 +35,8 @@ You can try it [here](http://fewa.comformity.hu/)
 - install [gulp.js](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 - clone the repository
 - go to cloned directory
-- in command prompt or terminal run: ```npm install```, then run ```gulp``` for development mode or
-```gulp build``` to build production to **/dist** folder
+- in command prompt or terminal run: ```npm install```, then run ```npm run dev``` for development mode or
+```npm run build``` to build production to **/dist** folder
 
 ##Credits##
 **Created by:** Zoltan Pasztor & Csaba Tuncsik
