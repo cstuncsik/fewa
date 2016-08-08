@@ -1,34 +1,39 @@
 {
   "name": "FEWA",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Shooter game for the js13k contest",
   "authors": [
     "Csaba <csaba.tuncsik@gmail.com>",
     "Zoltán <zoltan.t.pasztor@gmail.com>"
   ],
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp"
+  },
   "license": "WTFPL",
   "repository": "cstuncsik/fewa.git",
   "devDependencies": {
-    "browser-sync": "^2.10.0",
-    "gulp": "^3.9.0",
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-cached": "^1.1.0",
-    "gulp-changed": "^1.3.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-csso": "^1.0.1",
+    "gulp-changed": "^1.3.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-csso": "^1.1.0",
     "gulp-jshint": "^1.12.0",
-    "gulp-less": "^3.0.5",
-    "gulp-minify-html": "^1.0.4",
-    "gulp-plumber": "^1.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-plumber": "^1.1.0",
     "gulp-replace": "^0.5.4",
     "gulp-rev": "^4.0.0",
     "gulp-size": "^1.3.0",
-    "gulp-uglify": "^1.5.1",
-    "gulp-usemin": "^0.3.16",
+    "gulp-uglify": "^1.5.4",
+    "gulp-usemin": "^0.3.23",
     "gulp-using": "0.0.1",
     "gulp-util": "^3.0.7",
-    "gulp-zip": "^3.0.2",
-    "jshint-stylish": "^2.1.0",
-    "run-sequence": "^1.1.5"
+    "gulp-zip": "^3.2.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "run-sequence": "^1.2.2"
   }
 }
