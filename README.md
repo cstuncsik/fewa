@@ -1,14 +1,14 @@
-FEWA
-====
+# FEWA
 
 **Fire Earth Water Air**
 
 Logical shooter game for the js13k game 2014 contest
 
-##Game rules##
+### Game rules
+
 You have the four elements and 3 types of bricks from each element type.
 Stroked empty bricks are weak, color filled bricks are stronger and signed bricks are the strongest.
-If you shoot the signed bricks with the proper element it has special effect.
+If you shoot the signed bricks with the proper element it has a special effect.
 
 Fire special brick explodes the whole column of bricks.
 Earth special brick explodes surrounding bricks.
@@ -20,25 +20,29 @@ The Earth element, most effective against earth bricks, but least effective agai
 The Water element, most effective against water bricks, but least effective against fire bricks.
 The Air element, most effective against air bricks, but least effective against earth bricks.
 
-##Controls##
+### Controls
+
 **Swap/Move elements:** Click highlighted column to select an element and click to drop to another column
-**Pause:** P,  **Mute:** M,
+**Pause:** P, **Mute:** M,
 **Stop background animation:** B (because of performance issues on some devices)
 
-##Screenshot##
-![FEWA](fewa.jpg?raw=true "FEWA")
+### Screenshot
 
-You can try it [here](http://fewa.comformity.hu/)
+![FEWA](fewa.jpg?raw=true 'FEWA')
 
-##Quickstart##
-- install [Node.js](http://nodejs.org/download/)
-- install [gulp.js](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
-- clone the repository
-- go to cloned directory
-- in command prompt or terminal run: ```npm install```, then run ```npm run dev``` for development mode or
-```npm run build``` to build production to **/dist** folder
+You can try it [here](https://fewa.kodvoltkodnemvolt.hu/)
 
-##Credits##
+### Quickstart
+
+-   install [Node.js](http://nodejs.org/download/)
+-   install [gulp.js](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+-   clone the repository
+-   go to cloned directory
+-   in command prompt or terminal run: `yarn install --offline`, then run `yarn dev` for development mode or
+    `yarn build` to build production to **/dist** folder
+
+### Credits
+
 **Created by:** Zoltan Pasztor & Csaba Tuncsik
 
 **Audio Processing:** [JSFXR](https://github.com/mneubrand/jsfxr) by [@markusneubrand](https://twitter.com/markusneubrand)
@@ -49,7 +53,7 @@ You can try it [here](http://fewa.comformity.hu/)
 
 **Game random number utility inspired by:** # JS13KGames Boilerplate (https://github.com/ooflorent/js13k-boilerplate/blob/master/src/rng.js)
 
-##License##
+### License
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the Do What The Fuck You Want To Public License, Version 2,
