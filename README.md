@@ -30,7 +30,7 @@ The Air element, most effective against air bricks, but least effective against 
 
 ![FEWA](fewa.jpg?raw=true 'FEWA')
 
-You can try it [here](https://fewa.kodvoltkodnemvolt.hu/)
+You can try it [here](https://cstuncsik.github.io/fewa/)
 
 ### Quickstart
 

@@ -160,7 +160,6 @@ gulp.task('build', function() {
         'use-strict:add',
         'uglify',
         'inline',
-        'browser-sync',
         'zip');
 });
 
